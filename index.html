@@ -144,6 +144,36 @@ box-shadow:inset -7px -10px 16px hsl(var(--h) 90% 22%/.55),inset 5px 5px 12px #f
 .pf:nth-child(2){--r:2.2deg}.pf:nth-child(3){--r:-1deg}
 .pf.on{opacity:1;transform:rotate(var(--r,-2deg))}
 .pf img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;border-radius:2px;display:block}
+/* responsive */
+#s0,#s3,#s4,#s7{overflow-y:auto;overflow-x:hidden;justify-content:safe center}
+@media screen and (max-width:360px){
+#pad{grid-template-columns:repeat(3,56px);gap:10px}.k{height:52px}
+.cz{font-size:22px}.btn{padding:12px 20px;font-size:14px}
+#evw{width:88vw}#evr{padding:18px 14px 12px}#evr #lt{font-size:14px;line-height:24px}}
+@media screen and (max-height:640px){
+#pad{gap:10px}.k{height:48px}#dots{margin:12px 0}
+#evw{margin-top:17vh}#pc{height:40vh}#mv{height:46vh}
+.big{font-size:clamp(70px,24vw,100px)}.card{margin-top:10px}.btn{margin-top:16px}
+#evr #lt{font-size:14px;line-height:24px}}
+@media screen and (orientation:landscape) and (max-height:520px){
+#evw{margin-top:14vh;width:min(46vw,300px)}#pc{height:56vh}#mv{height:60vh}
+#pad{grid-template-columns:repeat(6,52px)}.k{height:44px}}
+@media screen and (min-width:900px){
+.cz{font-size:38px}.sc{font-size:76px}.dim{font-size:16px}
+.btn{font-size:17px;padding:15px 34px}.card{width:min(86vw,420px)}
+#pad{grid-template-columns:repeat(3,76px);gap:16px}.k{height:68px;font-size:22px}
+#evw{width:420px}#evr{width:560px}#evr #lt{font-size:16px;line-height:28px}
+#pc{height:min(62vh,560px)}#mv{height:min(66vh,560px)}}
+@media (prefers-reduced-motion:reduce){#hrt,#fi,.bu,#evs,#evh,#tap,.cake .fk,.cake .gl{animation:none}}
+/* smaller heart, bow and arrow for phone screens (scale = 0.7) */
+@media screen and (max-width:480px){
+#hrt{width:126px;height:118px}
+#hrt svg{width:100%;height:auto}
+#bwrap{width:94.5px;height:115.5px;transform-origin:21px 57.75px}
+#bw{width:94.5px;height:115.5px}
+#arr{left:21px;top:47.25px;transform:translateX(-14.7px);width:115.5px;height:21px}
+.ar{width:30px;height:30px;font-size:12px;margin:10px 6px 0}
+}
 </style></head><body>
 <canvas id="bg"></canvas><canvas id="cf"></canvas>
 <button id="mus" aria-label="Music">♫</button>
@@ -285,7 +315,7 @@ if(k=='Clear')code='';else if(k=='⌫')code=code.slice(0,-1);else if(code.length
 [...dots.children].forEach((d,j)=>d.classList.toggle('f',j<code.length));
 if(code.length==4){if(code==CFG.code)setTimeout(()=>go(1),300);else{pad.classList.add('sh');setTimeout(()=>{pad.classList.remove('sh');code='';[...dots.children].forEach(d=>d.classList.remove('f'))},450)}}};pad.append(b)});
 /* 1 bow */
-const KZ=1.5;
+const KZ=matchMedia('(max-width:480px)').matches?1.05:1.5;
 function bow(){const w=$('#bwrap'),a=$('#arr'),h=$('#hrt'),st=$('#str'),s=$('#s1');
 a.getAnimations().forEach(x=>x.cancel());w.style.transform='none';a.style.transition='none';a.style.transform='translateX('+(-14*KZ)+'px)';a.style.opacity=1;h.style.display='';st.setAttribute('d','M20 8L6 55L20 102');
 const R=w.getBoundingClientRect(),B=h.getBoundingClientRect(),px=R.left+20*KZ,py=R.top+55*KZ,hx=B.left+B.width/2,hy=B.top+B.height/2,ang=Math.atan2(hy-py,hx-px),d=Math.hypot(hx-px,hy-py);
